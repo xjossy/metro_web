@@ -28,6 +28,8 @@ metro.controls = new function() {
 			self.setCursorRect(date);
         };
 		
+		metro.canvas.center();
+		
 		self.playOn = true;
 		self.playProc();
     };

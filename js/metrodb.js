@@ -7,6 +7,7 @@
 metro.db = new function () {
     var metrodb = this;
     
+	metro.info = {};
     metrodb.events = [];
     metrodb.added  = {};
     
@@ -20,8 +21,6 @@ metro.db = new function () {
         var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/od6/public/values?alt=json";
 
         $.getJSON(url, function(data) {
-            console.log(data);
-
             var entry = data.feed.entry;
             metrodb.minDate = new metro.Date(0,0,0, true);
 
@@ -76,6 +75,14 @@ metro.db = new function () {
             for(var i in affected) {
                 affected[i].apply();
             }
+			
+			for(var st in metro.db.objects['station']) {
+				var station = metro.db.objects['station'][st];
+				metro.info.minx = 'minx' in metro.info ? Math.min(station.values.params.x, metro.info.minx) : station.values.params.x;
+				metro.info.miny = 'miny' in metro.info ? Math.min(station.values.params.y, metro.info.miny) : station.values.params.y;
+				metro.info.maxx = 'maxx' in metro.info ? Math.max(station.values.params.x, metro.info.maxx) : station.values.params.x;
+				metro.info.maxy = 'maxy' in metro.info ? Math.max(station.values.params.y, metro.info.maxy) : station.values.params.y;
+			}
         
             metrodb.onloaded();
         });
@@ -161,7 +168,6 @@ metro.db = new function () {
         for(var i in lineSum) {
             var line = lineSum[i];
             var mid = metrodb.minDate.addMonths(Math.round(line[1]/line[0]));
-            console.log(mid.index());
         }
     };
     

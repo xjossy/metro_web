@@ -27,6 +27,16 @@ metro.canvas.set = function(canvas) {
         
         document.body.addEventListener('resize', setSize);
     };
+	
+	metro.canvas.center = function() {
+		var svg = document.getElementById('scheme');
+		var width  = metro.info.maxx-metro.info.minx;
+		var height = metro.info.maxy-metro.info.miny;
+		var screenWidth  = (svg.offsetWidth  || svg.clientWidth );
+		var screenHeight = (svg.offsetHeight || svg.clientHeight);
+		
+		transform.translate(-metro.info.minx+(screenWidth - width)/2,-metro.info.miny+(screenHeight - height)/2);
+	}
 
     //document.body.addEventListener('resize', setSize);
     document.body.onresize = setSize;
