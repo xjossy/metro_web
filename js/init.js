@@ -16,6 +16,7 @@ metro.consts = {
 };
 
 metro.init = function() {
+	metro.infoBar.init();
     metro.svg = document.getElementById('scheme');
     metro.svgDefs = metro.svg.getElementsByTagName('defs')[0];
     //metro.testdiv = document.getElementById('testdiv');
@@ -53,6 +54,28 @@ metro.getLineColor = function(line) {
         (color >> 8) % 0x100,
         color % 0x100
     ];
+};
+
+metro.infoBar = new function() {
+	var self = this;
+	self.shown = false;
+	self.init = function() {
+		var infoBtn = document.getElementById('btnInfo');
+		var info = document.getElementById('infoBox');
+		
+		var infoBtnClass = infoBtn.className;
+		var infoClass = info.className;
+		
+		infoBtn.addEventListener('click', function() {
+			self.show(!self.shown);
+		}, false);
+		
+		self.show = function(shown) {
+			infoBtn.className = shown ? infoBtnClass + ' active' : infoBtnClass;
+			info.className    = shown ? infoClass + ' active' : infoClass;
+			self.shown = shown;
+		};
+	};
 };
 
 window.onload = metro.init;
