@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>История Метро</title>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        
+        <link type="text/css" rel="stylesheet" href="env.css" />
+        
+        <script src="js/init.js"></script>
+        <script src="js/utility.js"></script>
+        <script src="js/objects.js"></script>
+        <script src="js/metrodb.js"></script>
+        <script src="js/common.js"></script>
+        <script src="js/property.js"></script>
+        <script src="js/controls.js"></script>
+        <script src="js/animator.js"></script>
+        <script src="js/canvas.js"></script>
+    </head>
+    <body>
+        <svg id="scheme" version="1.1" baseProfile="full">
+            <defs></defs>
+            <g id="mainGroup">
+                <g id="connections" ></g>
+                <g id="stations"    ></g>
+                <g id="transfers"   ></g>
+                <g id="labels"      ></g>
+            </g>
+        </svg>
+        <div class="bottom-div" id="bottomDiv">
+            <svg class="playsvg" id="playsvg" viewbox="0 0 350 350" >
+                <defs>
+                  <filter
+                     id="filter3767"
+                     x="-0.12928203"
+                     width="1.2585641"
+                     y="-0.11196152"
+                     height="1.223923">
+                    <feGaussianBlur
+                       stdDeviation="8.800025" />
+                  </filter>
+                </defs>
+                <path id="btnplayShade"
+                   style="fill:none;stroke:#000000;stroke-opacity:0.5;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;filter:url(#filter3767)"
+                   d="m 264.77559,174.84523 -163.36424,-94.318382 0,188.636772 z"/>
+                <path
+                   id="bntPlay"
+                   style="fill:#ffffff;fill-opacity:0.5;stroke:none"
+                   d="m 101.41135,80.526848 0,188.636772 163.36424,-94.31839 z"/>
+             </svg>
+            <div class="navbar" id="navbar"><svg  version="1.1" baseProfile="full" id="navbarImg"></svg></div>
+        </div>
+        <div class="pointer-div" id="pointer">
+            <div class="pointer-message"></div>
+            <div class="pointer-cursor">&nbsp;</div>
+        </div>
+        <div class="info-div" id="info">
+            <div class="header"></div>
+            <!--<div class="content">В этот год:
+                <ul>
+                    <li>Abc</li>
+                    <li>Cde</li>
+                </ul>
+            </div>-->
+        </div>
+
+        <div class="btn-audio r-btn"></div>
+        <div class="btn-info r-btn"></div>
+
+        <!-- pluso snippet begin -->
+        <script type="text/javascript">(function() {
+        if (window.pluso)if (typeof window.pluso.start == "function") return;
+        if (window.ifpluso==undefined) { window.ifpluso = 1;
+          var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+          s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+          s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+          var h=d[g]('body')[0];
+          h.appendChild(s);
+        }})();</script>
+        <div class="pluso" data-background="transparent" data-options="big,round,line,vertical,nocounter,theme=01" data-services="twitter,vkontakte,facebook,google,email" data-title="История Метро" data-description="Году 70-летия Московского Метрополитена посвящается"></div>
+        <!-- pluso snippet end -->
+    </body>
+</html>
